@@ -1,0 +1,17 @@
+{
+	"color_scheme": "Packages/Colorsublime - Themes/KoralGreen.tmTheme",
+	"draw_minimap_border": true,
+	"font_size": 12,
+	"ignored_packages":
+	[
+		"Predawn",
+		"Vintage"
+	],
+	"overlay_scroll_bars": "enabled",
+	"soda_classic_tabs": true,
+	"soda_folder_icons": true,
+	"tab_size": 4,
+	"theme": "Soda Dark 3.sublime-theme",
+	"word_separators": "./\\()\"':,.;<>!@#$%^&*|+=[]{}`~?",
+	"word_wrap": false
+}

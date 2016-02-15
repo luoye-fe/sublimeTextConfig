@@ -1,0 +1,29 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Agola Color Schemes",
+		"Babel",
+		"Colorsublime",
+		"Emmet",
+		"HTML-CSS-JS Prettify",
+		"JsFormat",
+		"JSLint",
+		"LESS",
+		"Markdown Preview",
+		"Material Theme",
+		"Nodejs",
+		"Package Control",
+		"PackageResourceViewer",
+		"Predawn",
+		"Theme - Afterglow",
+		"Theme - itg.flat",
+		"Theme - Soda",
+		"Theme - SodaSeti",
+		"Theme - Spaceblack",
+		"Theme - Spacegray"
+	]
+}
