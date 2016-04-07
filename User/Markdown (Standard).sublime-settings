@@ -1,0 +1,13 @@
+{
+	"extensions":
+	[
+		"md",
+		"mdown",
+		"txt"
+	],
+	"color_scheme": "Packages/Colorsublime - Themes/KoralGreen.tmTheme",
+	"draw_centered": false,
+	"line_numbers": true,
+	"line_padding_top": 1,
+	"line_padding_bottom": 1,
+}

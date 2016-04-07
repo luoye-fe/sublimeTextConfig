@@ -1,0 +1,8 @@
+{
+	"extensions":
+	[
+		"mdown",
+		"txt"
+	],
+	"highlight_line": true
+}

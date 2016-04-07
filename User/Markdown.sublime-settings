@@ -1,0 +1,9 @@
+{
+	"highlight_line": true,
+	"extensions":
+	[
+		"md",
+		"mdown",
+		"txt"
+	],
+}

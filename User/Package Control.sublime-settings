@@ -8,11 +8,14 @@
 		"Agola Color Schemes",
 		"Babel",
 		"Colorsublime",
+		"EJS",
 		"Emmet",
 		"HTML-CSS-JS Prettify",
 		"JsFormat",
+		"JSHint",
 		"LESS",
 		"Markdown Preview",
+		"MarkdownEditing",
 		"Material Theme",
 		"Nodejs",
 		"Package Control",
@@ -23,6 +26,8 @@
 		"Theme - Soda",
 		"Theme - SodaSeti",
 		"Theme - Spaceblack",
-		"Theme - Spacegray"
+		"Theme - Spacegray",
+		"Vue Syntax Highlight",
+		"Vuejs Snippets"
 	]
 }
