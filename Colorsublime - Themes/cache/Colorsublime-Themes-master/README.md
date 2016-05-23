@@ -94,3 +94,7 @@ Themes creators
  - [Taiwo Kareem](https://github.com/tushortz) - [Wildlife](https://packagecontrol.io/packages/Wildlife%20Color%20Scheme)
  - [irstacks](https://github.com/irstacks)
  - [Praveen Puglia](http://praveenpuglia.com)
+ - [Consigliere](http://github.com/clthck)
+ - Giovane de Oliveira ([Mosquito13](https://github.com/Mosquito13))
+ - Odepax ([Mars Peacock](https://github.com/Odepax/mars-peacock))
+ - weop ([weop](https://github.com/weop))

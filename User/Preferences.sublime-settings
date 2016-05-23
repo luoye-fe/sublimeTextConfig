@@ -1,13 +1,14 @@
 {
 	"color_scheme": "Packages/Colorsublime - Themes/KoralGreen.tmTheme",
 	"draw_minimap_border": true,
-	"font_size": 12,
+	"font_size": 11,
 	"ignored_packages":
 	[
 		"Markdown",
 		"Predawn",
 		"Vintage"
 	],
+	"index_files": false,
 	"overlay_scroll_bars": "enabled",
 	"soda_classic_tabs": true,
 	"soda_folder_icons": true,

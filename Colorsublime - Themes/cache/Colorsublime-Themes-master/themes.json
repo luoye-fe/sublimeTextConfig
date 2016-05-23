@@ -68,7 +68,12 @@
     "FileName": "Hammer.tmTheme",
     "Author": "Jared Christensen",
     "Description": "A Dark theme focused on front end languages. Based off of the Bespin theme fond in Notepad ++"
-},{
+}, {
+    "Title": "Henanigans",
+    "FileName": "Henanigans.tmTheme",
+    "Author": "Alex Braun",
+    "Description": "Henanigans theme for Sublime.  Theme available for iPython Notebook, Stylish, iTerm and others."
+}, {
     "Title": "Daguiheso",
     "FileName": "Daguiheso.tmTheme",
     "Author": "Daniel Hernandez",
@@ -1251,6 +1256,11 @@
     "Author": "Dayle Rees.",
     "Description": ""
 }, {
+    "Title": "Mars Peacock",
+    "FileName": "MarsPeacock.tmTheme",
+    "Author": "Odepax",
+    "Description": "A dark contrasted syntax color scheme for Sublime Text. Inspired by Peacock theme."
+}, {
     "Title": "peel",
     "FileName": "peel.tmTheme",
     "Author": "Dayle Rees.",
@@ -1521,6 +1531,41 @@
     "FileName": "Cake.tmTheme",
     "Author": "Daniel Pintilei",
     "Description": "Yummy syntax theme. https://danielpintilei.cf/Cake"
+},
+{
+    "Title": "GitHub v2",
+    "FileName": "Github-v2.tmTheme",
+    "Author": "Consigliere",
+    "Description": "Github color scheme version 2"
+},
+{
+    "Title": "Solarized Dark (Nitrous.io version)",
+    "FileName": "Solarized-dark-Nitrous.io.tmTheme",
+    "Author": "Consigliere",
+    "Description": "Solarized Dark theme used in Nitrous.io"
+},
+{
+    "Title": "DarkMosquito Color Scheme",
+    "FileName": "DarkMosquito.tmTheme",
+    "Author": "Giovane de Oliveira",
+    "Description": "A dark color scheme for Sublime Text, the colors are based on Google Chrome Dev Tools (Default Dark Theme). https://github.com/Mosquito13/DarkMosquito-Color-Scheme"
+},
+{
+    "Title": "Humble Night",
+    "FileName": "Humble.tmTheme",
+    "Author": "weop",
+    "Description": "A minimalistic dark color theme that's easy on the eyes."
+},
+{
+    "Title": "Monokai Charcoal",
+    "FileName": "Monokai-Charcoal.tmTheme",
+    "Author": "Luka Kotar",
+    "Description": "A Monokai theme with a near-black purple background and a soft orange selection color."
+},
+{
+    "Title": "Toothpaste",
+    "FileName": "toothpaste.tmTheme",
+    "Author": "Cat Noone",
+    "Description": "A custom editor theme with flavorful colors that pop and are muted where necessary. https://github.com/imcatnoone/toothpaste"
 }
-
 ]

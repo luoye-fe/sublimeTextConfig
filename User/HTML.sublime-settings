@@ -1,8 +1,7 @@
 {
 	"extensions":
 	[
-		"vue",
-		"vue",
-		"html"
+		"html",
+		"vue"
 	]
 }

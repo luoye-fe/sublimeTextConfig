@@ -1,6 +1,5 @@
 {
-	"extensions":
-	[
+	"extensions":[
 		"md",
 		"mdown",
 		"txt"
