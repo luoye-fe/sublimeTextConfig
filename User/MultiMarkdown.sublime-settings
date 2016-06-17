@@ -5,5 +5,9 @@
 		"mdown",
 		"txt"
 	],
-	"highlight_line": true
+	"highlight_line": true,
+	"line_numbers": true,
+	"draw_centered": false,
+	"word_wrap": false,
+	"color_scheme": "Packages/MarkdownEditing/MarkdownEditor-Dark.tmTheme",
 }

@@ -1,0 +1,8 @@
+{
+	"extensions":
+	[
+		"less.erb",
+		"less.liquid",
+		"less"
+	]
+}

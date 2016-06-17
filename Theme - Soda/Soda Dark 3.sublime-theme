@@ -561,7 +561,7 @@
     // Sidebar tree
     {
         "class": "sidebar_tree",
-        "row_padding": [8, 3],
+        "row_padding": [6, 3],
         "indent": 12,
         "indent_offset": 12,
         "indent_top_level": false,
@@ -597,7 +597,7 @@
     // Sidebar entry
     {
         "class": "sidebar_label",
-        "color": [125, 125, 125],
+        "color": [157, 165, 180],
         "shadow_color": [0, 0, 0],
         "shadow_offset": [0, -1],
         "font.bold": false,
