@@ -2,6 +2,7 @@
 	"extensions":
 	[
 		"html",
-		"vue"
+		"vue",
+		"html "
 	]
 }

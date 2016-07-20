@@ -6,6 +6,7 @@
 	"installed_packages":
 	[
 		"Agola Color Schemes",
+		"Anaconda",
 		"Babel",
 		"Colorsublime",
 		"EditorConfig",
@@ -26,7 +27,6 @@
 		"Sass",
 		"SublimeLinter",
 		"SublimeLinter-contrib-eslint",
-		"SublimeLinter-jshint",
 		"Theme - Afterglow",
 		"Theme - itg.flat",
 		"Theme - Soda",
