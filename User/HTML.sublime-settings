@@ -3,6 +3,7 @@
 	[
 		"html",
 		"vue",
-		"html "
+		"html ",
+		"wxml"
 	]
 }

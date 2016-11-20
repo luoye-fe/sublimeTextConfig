@@ -1,7 +1,7 @@
 {
 	"color_scheme": "Packages/User/SublimeLinter/One Dark (SL).tmTheme",
 	"draw_minimap_border": true,
-	"font_size": 11,
+	"font_size": 12,
 	"ignored_packages":
 	[
 		"Markdown",

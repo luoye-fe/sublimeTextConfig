@@ -9,6 +9,10 @@
                 "caption": "Goto Definition"
             },
             {
+                "command": "anaconda_goto_assignment",
+                "caption": "Goto Assignment"
+            },
+            {
                 "command": "anaconda_find_usages",
                 "caption": "Find Usages"
             },
@@ -27,6 +31,10 @@
             {
                 "command": "anaconda_next_lint_error",
                 "caption": "Next lint error"
+            },
+            {
+                "command": "anaconda_prev_lint_error",
+                "caption": "Previous lint error"
             },
             {
                 "command": "anaconda_auto_format",

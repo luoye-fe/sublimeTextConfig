@@ -8,6 +8,8 @@
 import sublime
 from functools import partial
 
+from .typing import Union, Dict
+
 
 class JediUsages(object):
     """Work with Jedi definitions
@@ -16,7 +18,7 @@ class JediUsages(object):
     def __init__(self, text):
         self.text = text
 
-    def process(self, usages=False, data=None):
+    def process(self, usages: bool=False, data: Dict =None) -> None:
         """Process the definitions
         """
 
@@ -39,7 +41,8 @@ class JediUsages(object):
         else:
             self._show_options(definitions, usages)
 
-    def _jump(self, filename, lineno=None, columno=None, transient=False):
+    def _jump(self, filename: Union[int, str], lineno: int =None,
+              columno: int =None, transient: bool =False) -> None:
         """Jump to a window
         """
 
@@ -59,8 +62,11 @@ class JediUsages(object):
 
                 return
 
-            filename, lineno, columno = self.options[filename]
+        opts = self.options[filename]
+        if len(self.options[filename]) == 4:
+            opts = opts[1:]
 
+        filename, lineno, columno = opts
         flags = sublime.ENCODED_POSITION
         if transient:
             flags |= sublime.TRANSIENT
@@ -72,15 +78,20 @@ class JediUsages(object):
 
         self._toggle_indicator(lineno, columno)
 
-    def _show_options(self, defs, usages):
+    def _show_options(self, defs: Union[str, Dict], usages: bool) -> None:
         """Show a dropdown quickpanel with options to jump
         """
 
         view = self.text.view
         if usages or (not usages and type(defs) is not str):
-            options = [
-                [o[0], 'line: {} column: {}'.format(o[1], o[2])] for o in defs
-            ]
+            if len(defs) == 4:
+                options = [[
+                    o[0], o[1], 'line: {} column: {}'.format(o[2], o[3])
+                ] for o in defs]
+            else:
+                options = [[
+                    o[0], 'line: {} column: {}'.format(o[1], o[2])
+                ] for o in defs]
         else:
             if len(defs):
                 options = defs[0]
@@ -97,7 +108,7 @@ class JediUsages(object):
             on_highlight=partial(self._jump, transient=True)
         )
 
-    def _toggle_indicator(self, lineno=0, columno=0):
+    def _toggle_indicator(self, lineno: int =0, columno: int =0) -> None:
         """Toggle mark indicator for focus the cursor
         """
 

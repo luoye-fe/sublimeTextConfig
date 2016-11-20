@@ -7,8 +7,10 @@
 	[
 		"Agola Color Schemes",
 		"Anaconda",
+		"ArcticTypescript",
 		"AutoFileName",
 		"Babel",
+		"Better CoffeeScript",
 		"ColorPicker",
 		"Colorsublime",
 		"DocBlockr",
@@ -17,6 +19,7 @@
 		"Emmet",
 		"HTML-CSS-JS Prettify",
 		"Jade",
+		"JSX",
 		"LESS",
 		"Markdown Preview",
 		"MarkdownEditing",
@@ -36,6 +39,7 @@
 		"Theme - SodaSeti",
 		"Theme - Spaceblack",
 		"Theme - Spacegray",
+		"TypeScript",
 		"Vue Syntax Highlight",
 		"Vuejs Snippets"
 	]

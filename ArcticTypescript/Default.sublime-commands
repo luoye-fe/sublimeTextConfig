@@ -1,0 +1,62 @@
+[
+	{
+		"caption": "ArcticTypescript: Errors view",
+		"command": "typescript_error_panel",
+		"context": [ {"key": "ArcticTypescript"} ]
+	},
+	{
+		"caption": "ArcticTypescript: Go to first error",
+		"command": "typescript_error_goto",
+		"context": [ {"key": "ArcticTypescript"} ],
+		"args": { "n" : 0 }
+	},
+	{
+		"caption": "ArcticTypescript: Go to second error",
+		"command": "typescript_error_goto",
+		"context": [ {"key": "ArcticTypescript"} ],
+		"args": { "n" : 1 }
+	},
+	{
+		"caption": "ArcticTypescript: Go to third error",
+		"command": "typescript_error_goto",
+		"context": [ {"key": "ArcticTypescript"} ],
+		"args": { "n" : 2 }
+	},
+	{
+		"caption": "ArcticTypescript: Go to fourth error",
+		"command": "typescript_error_goto",
+		"context": [ {"key": "ArcticTypescript"} ],
+		"args": { "n" : 3 }
+	},
+	{
+		"caption": "ArcticTypescript: Go to definition",
+		"command": "typescript_definition",
+		"context": [ {"key": "ArcticTypescript"} ]
+	},
+	{
+		"caption": "ArcticTypescript: Reopen Project (after config changes)",
+		"command": "typescript_reload_project",
+		"context": [ {"key": "ArcticTypescript"} ]
+	},
+	{
+		"caption": "ArcticTypescript: View member type",
+		"command": "typescript_type",
+		"context": [ {"key": "ArcticTypescript"} ]
+	},
+	{
+		"caption": "ArcticTypescript: Refactoring (DO NOT USE, Test only)",
+		"command": "typescript_references",
+		"context": [ {"key": "ArcticTypescript"} ]
+	},
+	{
+		"caption": "ArcticTypescript: Build",
+		"command": "typescript_build",
+		"args": {"characters": ""},
+		"context": [ {"key": "ArcticTypescriptBuild"} ]
+	},
+	{
+		"caption": "ArcticTypescript: Terminate All Builds",
+		"command": "typescript_terminate_builds"
+	}
+
+]

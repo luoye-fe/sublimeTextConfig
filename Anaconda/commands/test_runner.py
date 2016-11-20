@@ -9,12 +9,18 @@ import functools
 
 import sublime
 import sublime_plugin
+from ..anaconda_lib.typing import List, Tuple
 from ..anaconda_lib.helpers import get_settings, git_installation, is_python
 
 DEFAULT_TEST_COMMAND = "nosetests"
 TEST_DELIMETER = "."
 TB_FILE = r'[ ]*File \"(...*?)\", line ([0-9]*)'
 COMMAND_SEPARATOR = "&" if os.name == "nt" else ";"
+TEST_PARAMS = {
+    'current_file_tests': '',
+    'current_test': '',
+    'project_tests': ''
+}
 
 
 def virtualenv(func):
@@ -47,9 +53,10 @@ class TestMethodMatcher(object):
     """Match a test method under the cursor
     """
 
-    def find_test_path(self, test_file_content,
-                       class_delimeter=TEST_DELIMETER,
-                       method_delimeter=TEST_DELIMETER):
+    def find_test_path(self,
+                       test_file_content: str,
+                       class_delimeter: str =TEST_DELIMETER,
+                       method_delimeter: str =TEST_DELIMETER) -> str:
         """Try to find the test path, returns None if can't be found
         """
 
@@ -62,7 +69,7 @@ class TestMethodMatcher(object):
                 result += method_delimeter + test_method
             return result
 
-    def find_test_method(self, test_file_content):
+    def find_test_method(self, test_file_content: str) -> str:
         """Try to find the test method, returns None if can't be found
         """
 
@@ -71,7 +78,7 @@ class TestMethodMatcher(object):
         if match_methods:
             return match_methods[-1]  # the last one?
 
-    def find_test_class(self, test_file_content):
+    def find_test_class(self, test_file_content: str) -> List[Tuple[str, int]]:
         """Try to find the test class, return None if can't be found
         """
 
@@ -106,7 +113,7 @@ class AnacondaRunTestsBase(sublime_plugin.TextCommand):
     """
 
     @property
-    def output_syntax(self):
+    def output_syntax(self) -> str:
         """
         Property that return back the PythonConsole output syntax.
 
@@ -119,7 +126,7 @@ class AnacondaRunTestsBase(sublime_plugin.TextCommand):
         )
 
     @property
-    def output_theme(self):
+    def output_theme(self) -> str:
         """
         Property that return back the PythonConsole output theme.
 
@@ -134,7 +141,7 @@ class AnacondaRunTestsBase(sublime_plugin.TextCommand):
         )
 
     @property
-    def test_path(self):
+    def test_path(self) -> str:
         """Return back the tests path
         """
 
@@ -149,13 +156,13 @@ class AnacondaRunTestsBase(sublime_plugin.TextCommand):
 
         return ""
 
-    def is_enabled(self):
+    def is_enabled(self) -> bool:
         """Determine if this command is enabled or not
         """
 
         return is_python(self.view)
 
-    def run(self, edit):
+    def run(self, edit: sublime.Edit) -> None:
         """Run the test or tests using the configured command
         """
 
@@ -172,13 +179,14 @@ class AnacondaRunTestsBase(sublime_plugin.TextCommand):
         )
         self._save_test_run(command)
 
-    def _load_settings(self):
+    def _load_settings(self) -> None:
         sep = COMMAND_SEPARATOR
         gs = get_settings
         self.test_root = gs(
             self.view, 'test_root', self.view.window().folders()[0]
         )
         self.test_command = gs(self.view, 'test_command', DEFAULT_TEST_COMMAND)
+        self.test_params_dict = gs(self.view, 'test_params', TEST_PARAMS)
         self.before_test = gs(self.view, 'test_before_command')
         if type(self.before_test) is list:
             self.before_test = sep.join(self.before_test)
@@ -195,11 +203,11 @@ class AnacondaRunTestsBase(sublime_plugin.TextCommand):
         self.output_show_color = gs(self.view, 'test_output_show_color', True)
 
     @virtualenv
-    def _prepare_command(self):
+    def _prepare_command(self) -> str:
         """Prepare the command to run adding pre tests and after tests
         """
 
-        command = [self.test_command, self.test_path]
+        command = [self.test_command, self.test_params, self.test_path]
         if self.before_test is not None:
             command = [self.before_test, COMMAND_SEPARATOR] + command
         if self.after_test is not None:
@@ -208,7 +216,7 @@ class AnacondaRunTestsBase(sublime_plugin.TextCommand):
         print(command)
         return ' '.join(command)
 
-    def _configure_output_window(self, width=80):
+    def _configure_output_window(self, width: int =80) -> None:
         """Configure the syntax and style of the output window
         """
 
@@ -218,7 +226,7 @@ class AnacondaRunTestsBase(sublime_plugin.TextCommand):
         if self.output_show_color:
             panel.settings().set('color_scheme', self.output_theme)
 
-    def _save_test_run(self, command):
+    def _save_test_run(self, command: str) -> None:
         """Save the last ran test
         """
 
@@ -233,7 +241,11 @@ class AnacondaRunCurrentFileTests(AnacondaRunTestsBase):
     """
 
     @property
-    def test_path(self):
+    def test_params(self):
+        return self.test_params_dict.get('current_file_tests', '')
+
+    @property
+    def test_path(self) -> str:
         return super(AnacondaRunCurrentFileTests, self).test_path
 
 
@@ -243,7 +255,11 @@ class AnacondaRunProjectTests(AnacondaRunTestsBase):
     """
 
     @property
-    def test_path(self):
+    def test_params(self):
+        return self.test_params_dict.get('project_tests', '')
+
+    @property
+    def test_path(self) -> str:
         """
         Empty path should run all tests.
 
@@ -258,7 +274,11 @@ class AnacondaRunCurrentTest(AnacondaRunTestsBase):
     """
 
     @property
-    def test_path(self):
+    def test_params(self):
+        return self.test_params_dict.get('current_test', '')
+
+    @property
+    def test_path(self) -> str:
         """Return the correct path to run the test under the cursor
         """
 

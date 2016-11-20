@@ -12,8 +12,11 @@ import sys
 import logging
 from string import Template
 
+import sublime
+import sublime_plugin
+
 from .anaconda_lib import ioloop
-from .anaconda_lib.worker import LOOP_RUNNING
+from .anaconda_lib.helpers import get_settings
 
 from .commands import *
 from .listeners import *
@@ -21,12 +24,15 @@ from .listeners import *
 if sys.version_info < (3, 3):
     raise RuntimeError('Anaconda works with Sublime Text 3 only')
 
+DISABLED_PLUGINS = []
+LOOP_RUNNING = False
+
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.StreamHandler(sys.stdout))
 logger.setLevel(logging.DEBUG)
 
 
-def plugin_loaded():
+def plugin_loaded() -> None:
     """Called directly from sublime on plugin load
     """
 
@@ -44,13 +50,78 @@ def plugin_loaded():
                 'package_folder': os.path.basename(package_folder)
             }))
 
+    # unload any conflictive package while anaconda is running
+    sublime.set_timeout_async(monitor_plugins, 0)
+
     if not LOOP_RUNNING:
         ioloop.loop()
 
 
-def plugin_unloaded():
+def plugin_unloaded() -> None:
     """Called directly from sublime on plugin unload
     """
 
+    # reenable any conflictive package
+    enable_plugins()
+
     if LOOP_RUNNING:
         ioloop.terminate()
+
+
+def monitor_plugins():
+    """Monitor for any plugin that conflicts with anaconda
+    """
+
+    view = sublime.active_window().active_view()
+    if not get_settings(view, 'auto_unload_conflictive_plugins', True):
+        return
+
+    plist = [
+        'Jedi - Python autocompletion',  # breaks auto completion
+        'SublimePythonIDE',  # interfere with autocompletion
+        'SublimeCodeIntel'  # breaks everything, SCI is a mess
+    ]
+    hllist = [
+        'MagicPython',  # breaks autocompletion on [dot]
+        'Python 3'  # breeaks autocompletion on [dot]
+    ]
+
+    for plugin in plist:
+        if plugin in sys.modules:
+            [
+                sublime_plugin.unload_module(m) for k, m in sys.modules.items()
+                if plugin in k
+            ]
+            if plugin not in DISABLED_PLUGINS:
+                DISABLED_PLUGINS.append(plugin)
+
+    for highlighter in hllist:
+        paths = os.listdir(sublime.packages_path()) + \
+            os.listdir(sublime.installed_packages_path())
+
+        for p in paths:
+            if highlighter in p:
+                fname = '{0}.sublime-settings'.format(highlighter)
+                s = sublime.load_settings(fname)
+                if all((s.has('auto_complete_triggers'), s.has('extensions'))):
+                    break
+                auto_complete = [
+                    {
+                        'characters': '.',
+                        'selector': 'source.python - string - constant.numeric',  # noqa
+                    }
+                ]
+                s.set('extensions', ['py'])
+                s.set('auto_complete_triggers', auto_complete)
+                sublime.save_settings(fname)
+                break
+
+    sublime.set_timeout_async(monitor_plugins, 500000)
+
+
+def enable_plugins():
+    """Reenable disabled plugins by anaconda
+    """
+
+    for plugin in DISABLED_PLUGINS:
+        sublime_plugin.reload_plugin(plugin)
